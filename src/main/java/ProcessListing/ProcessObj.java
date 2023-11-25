@@ -6,15 +6,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProcessObj {
-    private int id;
+    private long id;
     private String name;
-    private double cpuUsage;
-    private double memoryUsage;
+    private String pathExe;
+    private String cpuUsage;
+    private String timeSinceRunning;
 
-    public ProcessObj(int id, String name, double cpuUsage, double memoryUsage) {
+    public ProcessObj(long id, String name, String pathExe, String cpuUsage, String timeSinceRunning) {
         this.id = id;
         this.name = name;
+        this.pathExe = pathExe;
         this.cpuUsage = cpuUsage;
-        this.memoryUsage = memoryUsage;
+        this.timeSinceRunning = timeSinceRunning;
     }
 }
