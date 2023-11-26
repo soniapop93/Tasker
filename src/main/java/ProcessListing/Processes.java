@@ -1,5 +1,6 @@
 package ProcessListing;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 public class Processes {
 
     public void taskList() {
-        ArrayList<ProcessObj> processesList = new ArrayList<ProcessObj>();
+        ArrayList<ProcessObj> processesList = new ArrayList<>();
 
         try {
             ProcessHandle.allProcesses().forEach(
@@ -19,7 +20,7 @@ public class Processes {
                     });
 
             for (ProcessObj p : processesList) {
-                System.out.println(String.format("PID: %o -> Name: %s -> Path: %s -> CPU Usage: %s -> Time Since Running: %s",
+                System.out.println(String.format("PID: %s -> Name: %s -> Path: %s -> CPU Usage: %s -> Time Since Running: %s",
                         p.getId(),
                         p.getName(),
                         p.getPathExe(),
@@ -33,12 +34,6 @@ public class Processes {
     }
 
     private ProcessObj processDetails(ProcessHandle p) {
-//        String details;
-//        details = String.format("%d %s %s",
-//                p.pid(),
-//                p.info().command().toString().replace("Optional", ""),
-//                p.info().startInstant().toString().replace("Optional", ""));
-
         String pathStr;
 
         if (p.info().command().isPresent()) {
@@ -58,5 +53,16 @@ public class Processes {
                 p.info().totalCpuDuration().get().toString());
 
         return process;
+    }
+
+    public void killProcess(long pid) {
+        try {
+            ProcessHandle.of(pid).ifPresent(ProcessHandle::destroy);
+
+            System.out.println("Killed process with PID: " + pid);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

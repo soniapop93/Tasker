@@ -5,5 +5,6 @@ public class Main {
         Processes processes = new Processes();
         processes.taskList();
 
+        processes.killProcess();
     }
 }
