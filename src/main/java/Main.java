@@ -1,10 +1,8 @@
-import ProcessListing.Processes;
+import Logic.TaskerLogic;
 
 public class Main {
     public static void main(String[] args) {
-        Processes processes = new Processes();
-        processes.taskList();
-
-        processes.killProcess();
+        TaskerLogic taskerLogic = new TaskerLogic();
+        taskerLogic.tasker();
     }
 }
