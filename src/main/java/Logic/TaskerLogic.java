@@ -29,15 +29,14 @@ public class TaskerLogic {
                     System.out.println(line);
                     String pidKill = menuKillProcess();
 
-                    processes.killProcess(Long.valueOf(pidKill));
+                    boolean confirmation = confirmOption();
+
+                    if (confirmation) {
+                        processes.killProcess(Long.valueOf(pidKill));
+                    }
                     break;
             }
-
-
-            //processes.taskList();
         }
-
-        //processes.killProcess();
     }
 
 
@@ -56,13 +55,24 @@ public class TaskerLogic {
         return scanner.nextLine();
     }
 
+    private String inputUser() {
+        System.out.print(">>> ");
+        return scanner.nextLine();
+    }
+
     private String menuKillProcess() {
         String output = inputUser("Please add PID of the process you want to kill");
 
         return output;
     }
 
-    private void confirmOptionSelected() {
-        //todo: implement it
+    private boolean confirmOption() {
+        System.out.println("Please confirm?\n1. Yes\n2. No");
+        String input = inputUser();
+
+        if (input.equals("1")) {
+            return true;
+        }
+        return false;
     }
 }
