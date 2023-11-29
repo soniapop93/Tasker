@@ -7,8 +7,8 @@ public class Main {
         //TaskerLogic taskerLogic = new TaskerLogic();
         //taskerLogic.tasker();
 
-        Memory memory = new Memory();
-        memory.memoryUsage();
+        //Memory memory = new Memory();
+        //memory.memoryUsage();
 
         CPU cpu = new CPU();
         cpu.cpuUsage();
