@@ -1,13 +1,24 @@
 package Logic;
 
 import ProcessListing.Processes;
+import Resources.CPU;
+import Resources.Memory;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class TaskerLogic {
-    private String[] options = {"List processes", "Kill Process", "Exit"};
+    private String[] options = {
+            "List processes",
+            "Kill Process",
+            "Get Current CPU Usage",
+            "Get Current Memory Usage",
+            "Exit"};
     private Scanner scanner = new Scanner(System.in);
     private Processes processes = new Processes();
+    private CPU cpu = new CPU();
+
+    private Memory memory = new Memory();
     private final String line = "------------";
 
     public void tasker() {
@@ -18,7 +29,6 @@ public class TaskerLogic {
             System.out.println(line);
 
             String option = inputUser("Please add option selected");
-
 
             switch (option) {
                 case "1":
@@ -34,6 +44,24 @@ public class TaskerLogic {
                     if (confirmation) {
                         processes.killProcess(Long.valueOf(pidKill));
                     }
+                    break;
+                case "3":
+                    System.out.println(line);
+                    double cpuUsage = cpu.cpuUsage();
+
+                    if (cpuUsage < 0) {
+                        System.out.println(">>> Could not get the current CPU usage...");
+                    }
+                    else {
+                        System.out.println(">>> Current CPU Usage: " + cpuUsage);
+                    }
+                    break;
+
+                case "4":
+                    System.out.println(line);
+                    long memoryUsage = memory.memoryUsage();
+
+                    System.out.println(">>> Current Memory Usage: " + memoryUsage);
                     break;
             }
         }
