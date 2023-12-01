@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class TaskerLogic {
     private String[] options = {
-            "List processes",
+            "List processes sorted by name",
             "Kill Process",
             "Get Current CPU Usage",
             "Get Current Memory Usage",
@@ -33,7 +33,7 @@ public class TaskerLogic {
             switch (option) {
                 case "1":
                     System.out.println(line);
-                    processes.taskList();
+                    processes.sortByName();
                     break;
                 case "2":
                     System.out.println(line);

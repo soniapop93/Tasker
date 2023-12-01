@@ -3,12 +3,11 @@ package ProcessListing;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Processes {
-
-    public void taskList() {
-        ArrayList<ProcessObj> processesList = new ArrayList<>();
-
+    ArrayList<ProcessObj> processesList = new ArrayList<>();
+    private ArrayList<ProcessObj> taskList() {
         try {
             ProcessHandle.allProcesses().forEach(
                     process -> {
@@ -17,19 +16,11 @@ public class Processes {
                             processesList.add(processDetails(process));
                         }
                     });
-
-            for (ProcessObj p : processesList) {
-                System.out.println(String.format("PID: %s -> Name: %s -> Path: %s -> CPU Usage: %s -> Time Since Running: %s",
-                        p.getId(),
-                        p.getName(),
-                        p.getPathExe(),
-                        p.getCpuUsage(),
-                        p.getTimeSinceRunning()));
-            }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return processesList;
     }
 
     private ProcessObj processDetails(ProcessHandle p) {
@@ -62,6 +53,43 @@ public class Processes {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+
+    public void sortByName() {
+        processesList = taskList();
+
+        ArrayList<String> namesList = new ArrayList<>();
+
+        for (ProcessObj process : processesList) {
+            namesList.add(process.getName());
+        }
+        Collections.sort(namesList);
+
+        ArrayList<ProcessObj> sortedProcessesList = new ArrayList<>();
+
+        for (String name : namesList) {
+            for (ProcessObj process : processesList) {
+                if (name.equals(process.getName())) {
+                    if (!sortedProcessesList.contains(process)) {
+                        sortedProcessesList.add(process);
+                    }
+                    break;
+                }
+            }
+        }
+        displayTaskListProcesses(sortedProcessesList);
+    }
+
+    public void displayTaskListProcesses(ArrayList<ProcessObj> processesList) {
+        for (ProcessObj p : processesList) {
+            System.out.println(String.format("PID: %s -> Name: %s -> Path: %s -> CPU Usage: %s -> Time Since Running: %s",
+                    p.getId(),
+                    p.getName(),
+                    p.getPathExe(),
+                    p.getCpuUsage(),
+                    p.getTimeSinceRunning()));
         }
     }
 }
