@@ -57,7 +57,7 @@ public class Processes {
     }
 
 
-    public void sortByName() {
+    public void sortByNameAscending() {
         processesList = taskList();
 
         ArrayList<String> namesList = new ArrayList<>();
@@ -82,7 +82,33 @@ public class Processes {
         displayTaskListProcesses(sortedProcessesList);
     }
 
-    public void displayTaskListProcesses(ArrayList<ProcessObj> processesList) {
+    public void sortByNameDescending() {
+        processesList = taskList();
+
+        ArrayList<String> namesList = new ArrayList<>();
+
+        for (ProcessObj process : processesList) {
+            namesList.add(process.getName());
+        }
+        Collections.sort(namesList);
+        Collections.reverse(namesList);
+
+        ArrayList<ProcessObj> sortedProcessesList = new ArrayList<>();
+
+        for (String name : namesList) {
+            for (ProcessObj process : processesList) {
+                if (name.equals(process.getName())) {
+                    if (!sortedProcessesList.contains(process)) {
+                        sortedProcessesList.add(process);
+                    }
+                    break;
+                }
+            }
+        }
+        displayTaskListProcesses(sortedProcessesList);
+    }
+
+    private void displayTaskListProcesses(ArrayList<ProcessObj> processesList) {
         for (ProcessObj p : processesList) {
             System.out.println(String.format("PID: %s -> Name: %s -> Path: %s -> CPU Usage: %s -> Time Since Running: %s",
                     p.getId(),

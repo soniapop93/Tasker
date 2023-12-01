@@ -9,7 +9,8 @@ import java.util.Scanner;
 
 public class TaskerLogic {
     private String[] options = {
-            "List processes sorted by name",
+            "List processes sorted by name - Ascending",
+            "List processes sorted by name - Descending",
             "Kill Process",
             "Get Current CPU Usage",
             "Get Current Memory Usage",
@@ -33,9 +34,14 @@ public class TaskerLogic {
             switch (option) {
                 case "1":
                     System.out.println(line);
-                    processes.sortByName();
+                    processes.sortByNameAscending();
                     break;
+
                 case "2":
+                    System.out.println(line);
+                    processes.sortByNameDescending();
+                    break;
+                case "3":
                     System.out.println(line);
                     String pidKill = menuKillProcess();
 
@@ -45,7 +51,7 @@ public class TaskerLogic {
                         processes.killProcess(Long.valueOf(pidKill));
                     }
                     break;
-                case "3":
+                case "4":
                     System.out.println(line);
                     double cpuUsage = cpu.cpuUsage();
 
@@ -57,7 +63,7 @@ public class TaskerLogic {
                     }
                     break;
 
-                case "4":
+                case "5":
                     System.out.println(line);
                     long memoryUsage = memory.memoryUsage();
 
