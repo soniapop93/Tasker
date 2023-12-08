@@ -22,7 +22,7 @@ public class Info {
     private String systemManufacturer;
     private String systemModel;
     private String systemType;
-    private String Processor;
+    private String processor;
     private String biosVersion;
     private String windowsDirectory;
     private String bootDevice;
@@ -88,7 +88,7 @@ public class Info {
         this.systemManufacturer = systemManufacturer;
         this.systemModel = systemModel;
         this.systemType = systemType;
-        Processor = processor;
+        this.processor = processor;
         this.biosVersion = biosVersion;
         this.windowsDirectory = windowsDirectory;
         this.bootDevice = bootDevice;
