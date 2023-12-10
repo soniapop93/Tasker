@@ -1,5 +1,6 @@
 package Logic;
 
+import Info.InfoSystem;
 import ProcessListing.Processes;
 import Resources.CPU;
 import Resources.Memory;
@@ -14,11 +15,12 @@ public class TaskerLogic {
             "Kill Process",
             "Get Current CPU Usage",
             "Get Current Memory Usage",
+            "System Info",
             "Exit"};
     private Scanner scanner = new Scanner(System.in);
     private Processes processes = new Processes();
     private CPU cpu = new CPU();
-
+    private InfoSystem infoSystem = new InfoSystem();
     private Memory memory = new Memory();
     private final String line = "------------";
 
@@ -69,6 +71,11 @@ public class TaskerLogic {
                     long memoryUsage = memory.memoryUsage();
 
                     System.out.println(">>> Current Memory Usage: " + memoryUsage);
+                    break;
+
+                case "6":
+                    System.out.println(line);
+                    infoSystem.getSystemInfo();
                     break;
             }
         }
