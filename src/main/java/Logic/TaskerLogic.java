@@ -2,6 +2,7 @@ package Logic;
 
 import Info.InfoSystem;
 import ProcessListing.Processes;
+import ProcessListing.Startup;
 import Resources.CPU;
 import Resources.Memory;
 
@@ -16,12 +17,14 @@ public class TaskerLogic {
             "Get Current CPU Usage",
             "Get Current Memory Usage",
             "System Info",
+            "List Startup Apps",
             "Exit"};
     private Scanner scanner = new Scanner(System.in);
     private Processes processes = new Processes();
     private CPU cpu = new CPU();
     private InfoSystem infoSystem = new InfoSystem();
     private Memory memory = new Memory();
+    Startup startup = new Startup();
     private final String line = "------------";
 
     public void tasker() {
@@ -76,6 +79,11 @@ public class TaskerLogic {
                 case "6":
                     System.out.println(line);
                     infoSystem.getSystemInfo();
+                    break;
+
+                case "7":
+                    System.out.println(line);
+                    startup.showStartupApps();
                     break;
             }
         }
