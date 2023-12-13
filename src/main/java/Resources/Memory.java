@@ -11,4 +11,8 @@ public class Memory {
 
         return usedMemorySize / (1024 * 1024);
     }
+
+    public void alertMemoryusage() {
+        //TODO: finish it
+    }
 }

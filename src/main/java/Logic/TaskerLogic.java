@@ -6,7 +6,6 @@ import ProcessListing.Startup;
 import Resources.CPU;
 import Resources.Memory;
 
-import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class TaskerLogic {
@@ -29,7 +28,6 @@ public class TaskerLogic {
 
     public void tasker() {
         while(true) {
-
             System.out.println(line);
             System.out.println(menuOptions());
             System.out.println(line);
@@ -87,6 +85,10 @@ public class TaskerLogic {
                     break;
             }
         }
+    }
+
+    public void checkResources() {
+        cpu.alertCPUusage();
     }
 
 

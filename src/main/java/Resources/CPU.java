@@ -32,4 +32,12 @@ public class CPU {
         }
         return cpuUsage;
     }
+
+    public void alertCPUusage() {
+        double cpuValue = cpuUsage();
+
+        if (cpuValue >= 90.0) {
+            System.out.println("!!!!! >>> CPU VALUE: " + cpuValue + " <<< !!!!!");
+        }
+    }
 }
