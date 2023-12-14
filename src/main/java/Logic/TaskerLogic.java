@@ -89,6 +89,7 @@ public class TaskerLogic {
 
     public void checkResources() {
         cpu.alertCPUusage();
+        memory.alertMemoryusage();
     }
 
 
