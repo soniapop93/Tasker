@@ -35,6 +35,10 @@ public class TaskerLogic {
             String option = inputUser("Please add option selected");
 
             switch (option) {
+                default:
+                    System.out.println(">>> Option not found...Please try again...");
+                    break;
+
                 case "1":
                     System.out.println(line);
                     processes.sortByNameAscending();
@@ -83,6 +87,9 @@ public class TaskerLogic {
                     System.out.println(line);
                     startup.showStartupApps();
                     break;
+
+                case "8":
+                    return;
             }
         }
     }
