@@ -4,7 +4,7 @@
 Command-Line Task Manager that will return CPU, Memory values and can list and kill processes.
 
 
-## Requirments
+## Requirements
 
 ### Process Listing:
 - [X]  Display a list of currently running processes in the command-line interface.
